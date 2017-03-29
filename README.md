@@ -3,11 +3,16 @@
 >
 > Maintainer - [Kevin Naughton Jr.](https://github.com/kdn251)
 
+## Translations
+
+- [简体中文](./README-zh-cn.md)
+
 ## Table of Contents
 - [Online Judges](#online-judges)
 - [Live Coding Practice](#live-coding-practice)
 - [Data Structures](#data-structures)
 - [Algorithms](#algorithms)
+- [Greedy Algorithms](#greedy-algorithms)
 - [Bitmasks](#bitmasks)
 - [Runtime Analysis](#runtime-analysis)
 - [Video Lectures](#video-lectures)
@@ -22,6 +27,11 @@
 * [HackerRank](https://www.hackerrank.com/)
 * [CodeFights](https://codefights.com/)
 * [Kattis](https://open.kattis.com/)
+* [HackerEarth](https://www.hackerearth.com)
+* [Codility](https://codility.com/programmers/lessons/1-iterations/)
+* [Code Forces](http://codeforces.com/)
+* [Code Chef](https://www.codechef.com/)
+* [Sphere Online Judge - SPOJ](http://www.spoj.com/)
 
 ## Live Coding Practice
 * [Gainlo](http://www.gainlo.co/#!/)
@@ -32,8 +42,9 @@
  * A *Linked List* is a linear collection of data elements, called nodes, each
    pointing to the next node by means of a pointer. It is a data structure
    consisting of a group of nodes which together represent a sequence.
- * **Singly-linked list**: linked list in which nodes have pointers to the next node
- * **Doubly-linked list**: linked list in which nodes have pointers to *both* the previous node and the next node
+ * **Singly-linked list**: linked list in which each node points to the next node and the last node points to null
+ * **Doubly-linked list**: linked list in which each node has two pointers p, n such that p points to the previous node and n points to the next node; the last node's n pointer points to null
+ * **Circular-linked list**: linked list in which each node points to the next node and the last node points back to the first node
  * Time Complexity:
    * Access: `O(n)`
    * Search: `O(n)`
@@ -104,7 +115,7 @@
 ![Alt text](/Images/fenwickTree.png?raw=true "Fenwick Tree")
 
 ### Segment Tree
-* A Segment tree, is a tree data structure for storing intervals, or segments. It allows quering which of the stored segments contain
+* A Segment tree, is a tree data structure for storing intervals, or segments. It allows querying which of the stored segments contain
   a given point
 * Time Complexity:
  * Range Query: `O(log(n))`
@@ -256,7 +267,27 @@ or equal to those of the children and the lowest key is in the root node
 
 ![Alt text](/Images/kruskal.gif?raw=true "Kruskal's Algorithm")
 
-##Bitmasks
+## Greedy Algorithms
+* *Greedy Algorithms* are algorithms that make locally optimal choices at each step in the hope of eventually reaching the globally optimal solution
+* Problems must exhibit two properties in order to implement a Greedy solution:
+ * Optimal Substructure
+    * An optimal solution to the problem contains optimal solutions to the given problem's subproblems
+ * The Greedy Property
+    * An optimal solution is reached by "greedily" choosing the locally optimal choice without ever reconsidering previous choices
+* Example - Coin Change
+    * Given a target amount V cents and a list of denominations of n coins, i.e. we have coinValue[i] (in cents) for coin types i from [0...n - 1],
+      what is the minimum number of coins that we must use to represent amount V? Assume that we have an unlimited supply of coins of any type
+    * Coins - Penny (1 cent), Nickel (5 cents), Dime (10 cents), Quarter (25 cents)
+    * Assume V = 43. We can use the Greedy algorithm of continuously selecting the largest coin denomination less than or equal to V, subtract that
+      coin's value from V, and repeat.
+    * V = 41 | 0 coins used
+    * V = 16 | 1 coin used (41 - 25 = 16)
+    * V = 6  | 2 coins used (16 - 10 = 6)
+    * V = 1  | 3 coins used (6 - 5 = 1)
+    * V = 0  | 4 coins used (1 - 1 = 0)
+    * Using this algorithm, we arrive at a total of 4 coins which is optimal
+
+## Bitmasks
 * Bitmasking is a technique used to perform operations at the bit level. Leveraging bitmasks often leads to faster runtime complexity and
   helps limit memory usage
 * Test kth bit: `s & (1 << k);`
@@ -304,19 +335,21 @@ or equal to those of the children and the lowest key is in the root node
 
 ## Video Lectures
 * Data Structures
- * [UC Berkeley Data Structures](https://www.youtube.com/watch?v=mFPmKGIrQs4&index=1&list=PL-XXv-cvA_iAlnI-BQr9hjqADPBtujFJd)
- * [MIT Advanced Data Structures](https://www.youtube.com/watch?v=T0yzrZL1py0&list=PLUl4u3cNGP61hsJNdULdudlRL493b-XZf&index=1)
+    * [UC Berkeley Data Structures](https://www.youtube.com/watch?v=mFPmKGIrQs4&index=1&list=PL-XXv-cvA_iAlnI-BQr9hjqADPBtujFJd)
+    * [MIT Advanced Data Structures](https://www.youtube.com/watch?v=T0yzrZL1py0&list=PLUl4u3cNGP61hsJNdULdudlRL493b-XZf&index=1)
 * Algorithms
- * [MIT Introduction to Algorithms](https://www.youtube.com/watch?v=HtSuA80QTyo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=1)
- * [MIT Advanced Algorithms](https://www.youtube.com/playlist?list=PL6ogFv-ieghdoGKGg2Bik3Gl1glBTEu8c)
+    * [MIT Introduction to Algorithms](https://www.youtube.com/watch?v=HtSuA80QTyo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=1)
+    * [MIT Advanced Algorithms](https://www.youtube.com/playlist?list=PL6ogFv-ieghdoGKGg2Bik3Gl1glBTEu8c)
 
 ## Interview Books
-* Competitive Programming 3 - Steven Halim & Felix Halim
-* Cracking The Coding Interview - Gayle Laakmann McDowell
-* Cracking The PM Interview - Gayle Laakmann McDowell & Jackie Bavaro
+* [Competitive Programming 3 - Steven Halim & Felix Halim](https://www.amazon.com/Competitive-Programming-3rd-Steven-Halim/dp/B00FG8MNN8) 
+* [Cracking The Coding Interview - Gayle Laakmann McDowell](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?s=books&ie=UTF8)
+* [Cracking The PM Interview - Gayle Laakmann McDowell & Jackie Bavaro](https://www.amazon.com/Cracking-PM-Interview-Product-Technology-ebook/dp/B00ISYMUR6/ref=sr_1_1?s=books&ie=UTF8)
+* [Introduction to Algorithms -  Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest & Clifford Stein](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1490295989&sr=8-1&keywords=Introduction+to+Algorithms)
 
 ## Computer Science News
 * [Hacker News](https://news.ycombinator.com/)
+* [Lobsters](https://lobste.rs/)
 
 ## Directory Tree
 
